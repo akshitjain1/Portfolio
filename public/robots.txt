@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://akshitjain.dev/sitemap.xml
-
-# Disallow certain paths (if any)
-# Disallow: /admin/
-# Disallow: /private/
