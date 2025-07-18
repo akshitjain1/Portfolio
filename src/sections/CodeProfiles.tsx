@@ -104,8 +104,8 @@ export default function CodeProfiles() {
   // Fetch LeetCode Stats
   const fetchLeetCodeStats = async () => {
     try {
-      // Using LeetCode GraphQL API proxy
-      const response = await fetch('https://leetcode-api-faisalshohag.vercel.app/akshitjain1')
+      // Using LeetCode GraphQL API proxy with correct username
+      const response = await fetch('https://leetcode-api-faisalshohag.vercel.app/AkshitJain__1')
       const data = await response.json()
 
       setLeetcodeStats({
@@ -295,11 +295,11 @@ export default function CodeProfiles() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-800 dark:text-white">LeetCode</h3>
-                    <p className="text-gray-600 dark:text-gray-400">@akshitjain1</p>
+                    <p className="text-gray-600 dark:text-gray-400">@AkshitJain__1</p>
                   </div>
                 </div>
                 <motion.a
-                  href="https://leetcode.com/akshitjain1/"
+                  href="https://leetcode.com/u/AkshitJain__1/"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
@@ -367,11 +367,11 @@ export default function CodeProfiles() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-800 dark:text-white">GeeksforGeeks</h3>
-                    <p className="text-gray-600 dark:text-gray-400">@akshitjain1</p>
+                    <p className="text-gray-600 dark:text-gray-400">@akshitjain__1</p>
                   </div>
                 </div>
                 <motion.a
-                  href="https://auth.geeksforgeeks.org/user/akshitjain1/"
+                  href="https://www.geeksforgeeks.org/user/akshitjain__1/"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
