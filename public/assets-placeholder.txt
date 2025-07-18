@@ -1,0 +1,12 @@
+// This file is intentionally left empty to create the public directory
+// Replace with actual assets:
+// - profile.jpg (your profile picture)
+// - resume.pdf (your resume)
+// - og-image.png (social media preview image)
+// - projects/ folder with project screenshots
+
+// Placeholder images can be replaced with actual images
+// For development, you can use placeholder services like:
+// - https://picsum.photos/
+// - https://placeholder.com/
+// - https://via.placeholder.com/
