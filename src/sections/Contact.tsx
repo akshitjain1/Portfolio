@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { personalInfo, githubStats } from '@/data/portfolio'
+import { personalInfo } from '@/data/portfolio'
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { 
@@ -226,50 +226,6 @@ export default function Contact() {
                   })}
                 </div>
               </div>
-
-              {/* GitHub Stats */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-gray-800 dark:to-gray-800 rounded-xl p-6"
-              >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  GitHub Stats
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary-500">
-                      {githubStats.totalRepos}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Repositories
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary-500">
-                      {githubStats.totalCommits}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Commits
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary-500">
-                      {githubStats.totalStars}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Stars
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary-500">
-                      {githubStats.streak}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Day Streak
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
             </motion.div>
 
             {/* Contact Form */}

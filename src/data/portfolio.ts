@@ -36,6 +36,7 @@ export const navigation: readonly NavigationItem[] = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Code Profiles", href: "#achievements" },
   { name: "Timeline", href: "#timeline" },
   { name: "Contact", href: "#contact" }
 ] as const
