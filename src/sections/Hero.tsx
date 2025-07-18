@@ -36,7 +36,7 @@ export default function Hero() {
               key={`binary-${i}`}
               className="absolute text-green-500 font-mono text-xs select-none"
               animate={{
-                y: [-20, window.innerHeight + 20],
+                y: [-20, 1000],
               }}
               transition={{
                 duration: Math.random() * 8 + 4,
