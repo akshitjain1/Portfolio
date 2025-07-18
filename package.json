@@ -1,0 +1,51 @@
+{
+  "name": "akshit-portfolio",
+  "version": "1.0.0",
+  "description": "Modern portfolio website for Akshit Jain - ML Engineer & Web Developer",
+  "author": {
+    "name": "Akshit Jain",
+    "email": "akshitjain@example.com",
+    "url": "https://akshitjain.dev"
+  },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "framer-motion",
+    "machine-learning",
+    "web-development"
+  ],
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next",
+    "export": "next build && next export"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.12.1",
+    "framer-motion": "^10.16.5",
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.12.0",
+    "react-intersection-observer": "^9.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
