@@ -6,7 +6,7 @@ export const personalInfo: PersonalInfo = {
   title: "Aspiring Machine Learning Engineer | Debugging for joy | Rhythm-Coded Thinker",
   tagline: "Hi, I'm Akshit Jain",
   email: "akshitjainonly1@gmail.com",
-  phone: "+91 9350558221",
+  phone: "+91 935055XXXX (Contact to get full information)",
   location: "Phagwara, India",
   bio: "I'm a BTech CSE (ML) student at LPU with a passion for Machine Learning and problem-solving. When I'm not coding, you'll find me listening to music or exploring new AI/ML concepts. I have a hunger for perfection and believe that learning never stops. Currently building innovative solutions while mastering the art of turning coffee into code. Active in competitive programming with a focus on DSA and LeetCode challenges.",
   profileImage: "/profile.jpg",
