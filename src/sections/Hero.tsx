@@ -12,6 +12,11 @@ import {
 
 export default function Hero() {
   const [currentFactIndex, setCurrentFactIndex] = useState(0)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isTyping, setIsTyping] = useState(true)
+  const [displayedText, setDisplayedText] = useState('')
+  
+  const typewriterText = "Machine Learning Engineer"
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,14 +26,129 @@ export default function Hero() {
     return () => clearInterval(interval)
   }, [])
 
+  // Typewriter effect
+  useEffect(() => {
+    let timeout: NodeJS.Timeout
+    if (isTyping && displayedText.length < typewriterText.length) {
+      timeout = setTimeout(() => {
+        setDisplayedText(typewriterText.slice(0, displayedText.length + 1))
+      }, 100)
+    } else if (displayedText.length === typewriterText.length) {
+      timeout = setTimeout(() => {
+        setIsTyping(false)
+        setDisplayedText('')
+      }, 2000)
+    } else {
+      timeout = setTimeout(() => {
+        setIsTyping(true)
+      }, 500)
+    }
+    return () => clearTimeout(timeout)
+  }, [displayedText, isTyping])
+
+  // Mouse tracking
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   const scrollToNext = () => {
     scrollToSection('about')
   }
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Interactive Mouse Follower */}
+      <motion.div
+        className="fixed pointer-events-none z-50 w-6 h-6 border-2 border-primary-500 rounded-full mix-blend-difference"
+        animate={{
+          x: mousePosition.x - 12,
+          y: mousePosition.y - 12,
+        }}
+        transition={{ type: "spring", damping: 30, stiffness: 500 }}
+      />
+      
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-primary-900/20">
+        {/* 3D Floating Cubes */}
+        <div className="absolute inset-0 opacity-20 dark:opacity-30">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`cube-${i}`}
+              className="absolute w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 opacity-60"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                transform: 'perspective(100px) rotateX(45deg) rotateY(45deg)',
+              }}
+              animate={{
+                y: [0, -50, 0],
+                rotateX: [45, 135, 45],
+                rotateY: [45, 135, 45],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: Math.random() * 8 + 6,
+                repeat: Infinity,
+                delay: Math.random() * 4,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Matrix Rain Effect */}
+        <div className="absolute inset-0 overflow-hidden opacity-5 dark:opacity-10">
+          {[...Array(25)].map((_, i) => (
+            <motion.div
+              key={`matrix-${i}`}
+              className="absolute text-green-500 font-mono text-xs select-none"
+              animate={{
+                y: [-20, window.innerHeight + 20],
+              }}
+              transition={{
+                duration: Math.random() * 6 + 3,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "linear",
+              }}
+              style={{
+                left: `${Math.random() * 100}%`,
+              }}
+            >
+              {Array.from({ length: 15 }, () => String.fromCharCode(0x30A0 + Math.random() * 96)).join('')}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Geometric Patterns */}
+        <div className="absolute inset-0 opacity-10 dark:opacity-20">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={`geo-${i}`}
+              className="absolute border-2 border-blue-400"
+              style={{
+                width: `${50 + Math.random() * 100}px`,
+                height: `${50 + Math.random() * 100}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                borderRadius: i % 2 === 0 ? '50%' : '0%',
+              }}
+              animate={{
+                rotate: 360,
+                scale: [1, 1.5, 1],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: Math.random() * 20 + 10,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+              }}
+            />
+          ))}
+        </div>
         {/* Binary Rain Effect */}
         <div className="absolute inset-0 overflow-hidden opacity-5 dark:opacity-10">
           {[...Array(20)].map((_, i) => (
@@ -133,23 +253,76 @@ export default function Hero() {
             Hi, nice to e-meet you.
           </motion.p>
 
-          {/* Main Title */}
+          {/* Main Title with 3D Effect */}
           <motion.h1
             variants={fadeInUp}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-center"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-center relative"
           >
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <motion.span 
+              className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent relative inline-block"
+              whileHover={{ 
+                scale: 1.05,
+                rotateY: 5,
+                textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+              }}
+              style={{
+                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
+                transformStyle: 'preserve-3d'
+              }}
+            >
               AKSHIT JAIN
-            </span>
+              {/* 3D Shadow Effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent opacity-20 translate-x-1 translate-y-1 -z-10">
+                AKSHIT JAIN
+              </span>
+            </motion.span>
           </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p
+          {/* Dynamic Subtitle with Typewriter */}
+          <motion.div
             variants={fadeInUp}
-            className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto h-16 flex items-center justify-center"
           >
-            Aspiring Machine Learning Engineer | Debugging for joy | Rhythm-Coded Thinker
-          </motion.p>
+            <span>Aspiring </span>
+            <motion.span 
+              className="text-primary-500 font-bold mx-2 min-w-[280px] text-left"
+              key={displayedText}
+            >
+              {displayedText}
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+                className="text-primary-500"
+              >
+                |
+              </motion.span>
+            </motion.span>
+          </motion.div>
+
+          {/* Animated Skills Tags */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            className="flex flex-wrap justify-center gap-3 mb-8"
+          >
+            {['Python', 'Machine Learning', 'React', 'TypeScript', 'AI'].map((skill, index) => (
+              <motion.span
+                key={skill}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.5 + index * 0.2 }}
+                whileHover={{ 
+                  scale: 1.1, 
+                  backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                  y: -5 
+                }}
+                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 cursor-pointer transition-all duration-300"
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </motion.div>
 
           {/* Tech Quote */}
           <motion.div

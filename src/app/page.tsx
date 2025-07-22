@@ -10,10 +10,16 @@ import Timeline from '@/sections/Timeline'
 import Contact from '@/sections/Contact'
 import Footer from '@/components/Footer'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import FloatingNotifications from '@/components/FloatingNotifications'
+import CustomCursor from '@/components/CustomCursor'
+import ParticleBackground from '@/components/ParticleBackground'
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative cursor-none">
+      <ParticleBackground />
+      <CustomCursor />
+      <FloatingNotifications />
       <Navbar />
       <Hero />
       <About />

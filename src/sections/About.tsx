@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { personalInfo } from '@/data/portfolio'
+import AnimatedTerminal from '@/components/AnimatedTerminal'
 import { 
   HiAcademicCap,
   HiCode,
@@ -60,42 +61,104 @@ export default function About() {
               </p>
             </motion.div>
 
-            {/* Stats */}
+            {/* Interactive Stats with Counters */}
             <motion.div 
               variants={itemVariants}
               className="grid grid-cols-2 gap-6"
             >
-              <div className="space-y-2">
+              <motion.div 
+                className="space-y-2 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 border border-blue-200 dark:border-blue-700 hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
                 <div className="flex items-center space-x-2">
                   <HiAcademicCap className="w-5 h-5 text-primary-500" />
                   <span className="text-sm text-gray-600 dark:text-gray-400">Education</span>
                 </div>
                 <p className="font-semibold text-gray-900 dark:text-white">3rd Year BTech</p>
-              </div>
+                <motion.div 
+                  className="w-full bg-blue-200 dark:bg-blue-800 rounded-full h-2"
+                  initial={{ width: 0 }}
+                  animate={{ width: '100%' }}
+                  transition={{ delay: 0.5, duration: 1 }}
+                >
+                  <motion.div 
+                    className="bg-blue-500 h-2 rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: '75%' }}
+                    transition={{ delay: 1, duration: 1.5 }}
+                  />
+                </motion.div>
+              </motion.div>
               
-              <div className="space-y-2">
+              <motion.div 
+                className="space-y-2 p-4 rounded-lg bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border border-green-200 dark:border-green-700 hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
                 <div className="flex items-center space-x-2">
                   <HiCode className="w-5 h-5 text-primary-500" />
                   <span className="text-sm text-gray-600 dark:text-gray-400">Focus</span>
                 </div>
                 <p className="font-semibold text-gray-900 dark:text-white">Machine Learning</p>
-              </div>
+                <motion.div className="flex space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="w-2 h-2 bg-green-500 rounded-full"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 1.5 + i * 0.2 }}
+                    />
+                  ))}
+                </motion.div>
+              </motion.div>
               
-              <div className="space-y-2">
+              <motion.div 
+                className="space-y-2 p-4 rounded-lg bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 border border-purple-200 dark:border-purple-700 hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
                 <div className="flex items-center space-x-2">
                   <HiLightningBolt className="w-5 h-5 text-primary-500" />
                   <span className="text-sm text-gray-600 dark:text-gray-400">Experience</span>
                 </div>
-                <p className="font-semibold text-gray-900 dark:text-white">2+ Years</p>
-              </div>
+                <motion.p 
+                  className="font-semibold text-gray-900 dark:text-white"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2 }}
+                >
+                  2+ Years
+                </motion.p>
+                <div className="flex space-x-1">
+                  {['💻', '🚀', '⚡'].map((emoji, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, rotateY: 180 }}
+                      animate={{ opacity: 1, rotateY: 0 }}
+                      transition={{ delay: 2.2 + i * 0.3 }}
+                    >
+                      {emoji}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
               
-              <div className="space-y-2">
+              <motion.div 
+                className="space-y-2 p-4 rounded-lg bg-gradient-to-r from-pink-50 to-pink-100 dark:from-pink-900/20 dark:to-pink-800/20 border border-pink-200 dark:border-pink-700 hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
                 <div className="flex items-center space-x-2">
                   <HiHeart className="w-5 h-5 text-primary-500" />
                   <span className="text-sm text-gray-600 dark:text-gray-400">Passion</span>
                 </div>
                 <p className="font-semibold text-gray-900 dark:text-white">Problem Solving</p>
-              </div>
+                <motion.div 
+                  className="text-pink-500"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  ❤️
+                </motion.div>
+              </motion.div>
             </motion.div>
 
             {/* Contact Info */}
@@ -124,55 +187,127 @@ export default function About() {
 
           {/* Right Content */}
           <motion.div variants={itemVariants} className="space-y-8">
+            {/* Animated Terminal */}
+            <AnimatedTerminal />
+
             {/* Profile Image */}
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
               className="relative mx-auto w-80 h-80 rounded-2xl overflow-hidden"
             >
-              {/* Dark Subtle Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
+              {/* Enhanced Dark Background with Animation */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black"
+                animate={{
+                  background: [
+                    'linear-gradient(45deg, #1f2937, #111827, #000000)',
+                    'linear-gradient(45deg, #111827, #000000, #1f2937)',
+                    'linear-gradient(45deg, #000000, #1f2937, #111827)',
+                  ]
+                }}
+                transition={{ duration: 8, repeat: Infinity }}
+              />
               
-              {/* Subtle Dark Grid Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="w-full h-full" style={{
+              {/* Animated Grid Pattern */}
+              <motion.div 
+                className="absolute inset-0 opacity-20"
+                animate={{ opacity: [0.1, 0.3, 0.1] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                style={{
                   backgroundImage: `
-                    linear-gradient(rgba(156, 163, 175, 0.1) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(156, 163, 175, 0.1) 1px, transparent 1px)
+                    linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
                   `,
                   backgroundSize: '20px 20px'
-                }} />
-              </div>
+                }}
+              />
               
-              {/* Subtle Dark Border */}
-              <div className="absolute inset-0 rounded-2xl border border-gray-700 dark:border-gray-600" />
+              {/* Glowing Border */}
+              <motion.div 
+                className="absolute inset-0 rounded-2xl border-2"
+                animate={{
+                  borderColor: [
+                    'rgba(59, 130, 246, 0.5)',
+                    'rgba(139, 92, 246, 0.5)',
+                    'rgba(236, 72, 153, 0.5)',
+                    'rgba(59, 130, 246, 0.5)',
+                  ]
+                }}
+                transition={{ duration: 6, repeat: Infinity }}
+              />
               
-              {/* Profile Image - Fixed positioning to show full head */}
+              {/* Profile Image with Enhanced Effects */}
               <motion.img
                 src="/projects/Picture.png"
                 alt="Akshit Jain"
                 className="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] object-cover object-top rounded-xl"
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.2 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  filter: 'brightness(1.1) contrast(1.1)'
+                }}
+                transition={{ duration: 0.3 }}
               />
               
-              {/* Dark Overlay for Live Effect */}
-              <div className="absolute inset-3 rounded-xl bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-              
-              {/* Subtle Corner Accents */}
-              <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-gray-500 dark:border-gray-400 opacity-50" />
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-gray-500 dark:border-gray-400 opacity-50" />
-              
-              {/* Subtle Glow on Hover */}
+              {/* Animated Corner Accents */}
               <motion.div 
-                className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-gray-600 to-gray-800 opacity-0 blur-lg transition-opacity duration-300"
-                whileHover={{ opacity: 0.1 }}
+                className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 opacity-70"
+                animate={{
+                  borderColor: [
+                    'rgba(59, 130, 246, 1)',
+                    'rgba(139, 92, 246, 1)',
+                    'rgba(236, 72, 153, 1)',
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+              <motion.div 
+                className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 opacity-70"
+                animate={{
+                  borderColor: [
+                    'rgba(236, 72, 153, 1)',
+                    'rgba(59, 130, 246, 1)',
+                    'rgba(139, 92, 246, 1)',
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
               />
               
-              {/* Live Indicator */}
-              <div className="absolute bottom-4 right-4 flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs text-gray-400 font-mono">LIVE</span>
+              {/* Pulsing Live Indicator */}
+              <motion.div className="absolute bottom-4 right-4 flex items-center space-x-2">
+                <motion.div 
+                  className="w-3 h-3 bg-green-500 rounded-full"
+                  animate={{ 
+                    scale: [1, 1.5, 1],
+                    opacity: [1, 0.5, 1]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <span className="text-xs text-gray-300 font-mono">ONLINE</span>
+              </motion.div>
+
+              {/* Floating Particles */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-blue-400 rounded-full"
+                    style={{
+                      left: `${20 + Math.random() * 60}%`,
+                      top: `${20 + Math.random() * 60}%`,
+                    }}
+                    animate={{
+                      y: [0, -20, 0],
+                      opacity: [0, 1, 0],
+                      scale: [0, 1.5, 0]
+                    }}
+                    transition={{
+                      duration: 3 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2
+                    }}
+                  />
+                ))}
               </div>
             </motion.div>
 

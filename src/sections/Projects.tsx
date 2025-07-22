@@ -111,27 +111,59 @@ export default function Projects() {
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.8, rotateY: -10 }}
+                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, rotateY: 10 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -10 }}
-                  className="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group border border-gray-200 dark:border-gray-700"
+                  whileHover={{ 
+                    y: -15, 
+                    rotateY: 5,
+                    transition: { duration: 0.3 }
+                  }}
+                  className="relative bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all group border border-gray-200 dark:border-gray-700"
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
+                  {/* Animated Border Glow */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    animate={{
+                      background: [
+                        'linear-gradient(0deg, transparent, transparent)',
+                        'linear-gradient(180deg, rgba(59, 130, 246, 0.3), transparent)',
+                        'linear-gradient(360deg, transparent, transparent)',
+                      ]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+
                   {/* Project Image */}
-                  <div className="relative h-48 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600">
+                  <div className="relative h-48 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-4">
+                    
+                    {/* Animated Overlay */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      initial={false}
+                    />
+                    
+                    {/* Interactive Action Buttons */}
+                    <motion.div 
+                      className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      initial={false}
+                    >
                       <motion.button
-                        whileHover={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.2, rotate: 5 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => setSelectedProject(project)}
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
+                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors shadow-lg"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.1 }}
                       >
                         <HiEye className="w-5 h-5" />
                       </motion.button>
@@ -139,28 +171,74 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.2, rotate: -5 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
+                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors shadow-lg"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.2 }}
                       >
                         <HiCode className="w-5 h-5" />
                       </motion.a>
-                      <motion.a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
-                      >
-                        <HiExternalLink className="w-5 h-5" />
-                      </motion.a>
-                    </div>
+                      {project.demo && (
+                        <motion.a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.2, rotate: 5 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors shadow-lg"
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          <HiExternalLink className="w-5 h-5" />
+                        </motion.a>
+                      )}
+                    </motion.div>
+
+                    {/* Featured Badge with Animation */}
                     {project.featured && (
-                      <div className="absolute top-4 right-4 bg-accent-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-                        Featured
-                      </div>
+                      <motion.div 
+                        className="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg"
+                        animate={{ 
+                          rotate: [0, 5, -5, 0],
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          duration: 2, 
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }}
+                      >
+                        ⭐ Featured
+                      </motion.div>
                     )}
+
+                    {/* Floating Tech Icons */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                        <motion.div
+                          key={tag}
+                          className="absolute text-white/70 text-xs font-mono opacity-0 group-hover:opacity-100"
+                          style={{
+                            left: `${20 + tagIndex * 25}%`,
+                            top: `${15 + tagIndex * 10}%`,
+                          }}
+                          animate={{
+                            y: [0, -10, 0],
+                            opacity: [0, 0.7, 0]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: tagIndex * 0.5
+                          }}
+                        >
+                          {tag}
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Project Info */}
