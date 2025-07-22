@@ -2,20 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useTheme } from '@/components/ThemeProvider'
 import { navigation } from '@/data/portfolio'
 import { 
   HiMenu, 
-  HiX, 
-  HiSun, 
-  HiMoon 
+  HiX
 } from 'react-icons/hi'
 
 export default function NavbarClient() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
-  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,21 +93,8 @@ export default function NavbarClient() {
             ))}
           </div>
 
-          {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              {theme === 'light' ? (
-                <HiMoon className="w-5 h-5" />
-              ) : (
-                <HiSun className="w-5 h-5" />
-              )}
-            </motion.button>
-
+          {/* Mobile Menu */}
+          <div className="flex items-center">
             {/* Mobile menu button */}
             <motion.button
               whileHover={{ scale: 1.1 }}

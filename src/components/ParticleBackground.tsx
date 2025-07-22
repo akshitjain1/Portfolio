@@ -16,23 +16,34 @@ interface Particle {
 export default function ParticleBackground() {
   const [particles, setParticles] = useState<Particle[]>([])
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+    
     const updateDimensions = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight
-      })
+      if (typeof window !== 'undefined') {
+        setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight
+        })
+      }
     }
 
     updateDimensions()
-    window.addEventListener('resize', updateDimensions)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', updateDimensions)
+    }
 
     // Create initial particles
     const initialParticles: Particle[] = Array.from({ length: 50 }, (_, i) => ({
       id: i,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
+      x: Math.random() * (dimensions.width || 1920),
+      y: Math.random() * (dimensions.height || 1080),
       size: Math.random() * 4 + 1,
       speed: Math.random() * 0.5 + 0.1,
       color: ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b'][Math.floor(Math.random() * 5)],
@@ -41,8 +52,12 @@ export default function ParticleBackground() {
 
     setParticles(initialParticles)
 
-    return () => window.removeEventListener('resize', updateDimensions)
-  }, [])
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateDimensions)
+      }
+    }
+  }, [isMounted, dimensions.width, dimensions.height])
 
   useEffect(() => {
     const animateParticles = () => {
@@ -64,6 +79,11 @@ export default function ParticleBackground() {
     const interval = setInterval(animateParticles, 16) // ~60fps
     return () => clearInterval(interval)
   }, [dimensions])
+
+  // Don't render on server-side
+  if (!isMounted) {
+    return null
+  }
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">

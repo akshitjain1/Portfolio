@@ -12,48 +12,52 @@ import {
 
 export default function Hero() {
   const [currentFactIndex, setCurrentFactIndex] = useState(0)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isTyping, setIsTyping] = useState(true)
   const [displayedText, setDisplayedText] = useState('')
+  const [windowHeight, setWindowHeight] = useState(800) // Default fallback
+  const [isClient, setIsClient] = useState(false)
   
   const typewriterText = "Machine Learning Engineer"
+
+  // Set client-side flag
+  useEffect(() => {
+    setIsClient(true)
+    if (typeof window !== 'undefined') {
+      setWindowHeight(window.innerHeight)
+      
+      const handleResize = () => setWindowHeight(window.innerHeight)
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentFactIndex((prev) => (prev + 1) % personalInfo.funFacts.length)
-    }, 3000)
+    }, 5000) // Increased from 3 seconds to 5 seconds
 
     return () => clearInterval(interval)
   }, [])
 
-  // Typewriter effect
+  // Optimized Typewriter effect with longer delays
   useEffect(() => {
     let timeout: NodeJS.Timeout
     if (isTyping && displayedText.length < typewriterText.length) {
       timeout = setTimeout(() => {
         setDisplayedText(typewriterText.slice(0, displayedText.length + 1))
-      }, 100)
+      }, 150) // Slower typing for better performance
     } else if (displayedText.length === typewriterText.length) {
       timeout = setTimeout(() => {
         setIsTyping(false)
         setDisplayedText('')
-      }, 2000)
+      }, 3000) // Longer pause
     } else {
       timeout = setTimeout(() => {
         setIsTyping(true)
-      }, 500)
+      }, 1000) // Longer delay between cycles
     }
     return () => clearTimeout(timeout)
   }, [displayedText, isTyping])
-
-  // Mouse tracking
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
 
   const scrollToNext = () => {
     scrollToSection('about')
@@ -61,94 +65,56 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Interactive Mouse Follower */}
-      <motion.div
-        className="fixed pointer-events-none z-50 w-6 h-6 border-2 border-primary-500 rounded-full mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 12,
-          y: mousePosition.y - 12,
-        }}
-        transition={{ type: "spring", damping: 30, stiffness: 500 }}
-      />
-      
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-primary-900/20">
-        {/* 3D Floating Cubes */}
-        <div className="absolute inset-0 opacity-20 dark:opacity-30">
-          {[...Array(8)].map((_, i) => (
+        {/* Simplified Floating Elements */}
+        <div className="absolute inset-0 opacity-10 dark:opacity-20">
+          {[...Array(3)].map((_, i) => (
             <motion.div
               key={`cube-${i}`}
-              className="absolute w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 opacity-60"
+              className="absolute w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 opacity-40 rounded"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                transform: 'perspective(100px) rotateX(45deg) rotateY(45deg)',
+                left: `${20 + i * 30}%`,
+                top: `${20 + i * 20}%`,
               }}
               animate={{
-                y: [0, -50, 0],
-                rotateX: [45, 135, 45],
-                rotateY: [45, 135, 45],
-                scale: [1, 1.2, 1],
+                y: [0, -30, 0],
+                rotate: [0, 180, 360],
               }}
               transition={{
-                duration: Math.random() * 8 + 6,
+                duration: 8 + i * 2,
                 repeat: Infinity,
-                delay: Math.random() * 4,
+                delay: i * 1,
               }}
             />
           ))}
         </div>
 
-        {/* Matrix Rain Effect */}
-        <div className="absolute inset-0 overflow-hidden opacity-5 dark:opacity-10">
-          {[...Array(25)].map((_, i) => (
-            <motion.div
-              key={`matrix-${i}`}
-              className="absolute text-green-500 font-mono text-xs select-none"
-              animate={{
-                y: [-20, window.innerHeight + 20],
-              }}
-              transition={{
-                duration: Math.random() * 6 + 3,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-                ease: "linear",
-              }}
-              style={{
-                left: `${Math.random() * 100}%`,
-              }}
-            >
-              {Array.from({ length: 15 }, () => String.fromCharCode(0x30A0 + Math.random() * 96)).join('')}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Geometric Patterns */}
-        <div className="absolute inset-0 opacity-10 dark:opacity-20">
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={`geo-${i}`}
-              className="absolute border-2 border-blue-400"
-              style={{
-                width: `${50 + Math.random() * 100}px`,
-                height: `${50 + Math.random() * 100}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                borderRadius: i % 2 === 0 ? '50%' : '0%',
-              }}
-              animate={{
-                rotate: 360,
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: Math.random() * 20 + 10,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-              }}
-            />
-          ))}
-        </div>
+        {/* Reduced Matrix Rain Effect - Only show on client */}
+        {isClient && (
+          <div className="absolute inset-0 overflow-hidden opacity-5 dark:opacity-10">
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={`matrix-${i}`}
+                className="absolute text-green-500 font-mono text-xs select-none"
+                animate={{
+                  y: [-20, windowHeight + 20],
+                }}
+                transition={{
+                  duration: 8 + i,
+                  repeat: Infinity,
+                  delay: i * 0.5,
+                  ease: "linear",
+                }}
+                style={{
+                  left: `${10 + i * 10}%`,
+                }}
+              >
+                {Array.from({ length: 8 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
+              </motion.div>
+            ))}
+          </div>
+        )}
         {/* Binary Rain Effect */}
         <div className="absolute inset-0 overflow-hidden opacity-5 dark:opacity-10">
           {[...Array(20)].map((_, i) => (

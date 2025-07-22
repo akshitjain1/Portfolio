@@ -61,8 +61,16 @@ const notifications: Omit<Notification, 'id'>[] = [
 export default function FloatingNotifications() {
   const [activeNotifications, setActiveNotifications] = useState<Notification[]>([])
   const [notificationId, setNotificationId] = useState(0)
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
+    if (!isMounted) return
+    
     const interval = setInterval(() => {
       const randomNotification = notifications[Math.floor(Math.random() * notifications.length)]
       const newNotification: Notification = {
@@ -73,17 +81,22 @@ export default function FloatingNotifications() {
       setActiveNotifications(prev => [...prev, newNotification])
       setNotificationId(prev => prev + 1)
 
-      // Remove notification after 4 seconds
+      // Remove notification after 5 seconds
       setTimeout(() => {
         setActiveNotifications(prev => prev.filter(notif => notif.id !== newNotification.id))
-      }, 4000)
-    }, 6000)
+      }, 5000)
+    }, 12000) // Increased from 6 seconds to 12 seconds
 
     return () => clearInterval(interval)
-  }, [notificationId])
+  }, [isMounted, notificationId])
+
+  // Don't render on server-side
+  if (!isMounted) {
+    return null
+  }
 
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-2 pointer-events-none">
+    <div className="fixed top-4 right-4 z-[60] space-y-2 pointer-events-none">
       <AnimatePresence mode="popLayout">
         {activeNotifications.map((notification) => (
           <motion.div
@@ -97,8 +110,8 @@ export default function FloatingNotifications() {
             <div className="flex items-start space-x-3">
               <motion.div
                 className={notification.color}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               >
                 {notification.icon}
               </motion.div>
