@@ -110,84 +110,90 @@ export default function Hero() {
                   left: `${10 + i * 10}%`,
                 }}
               >
-                {Array.from({ length: 8 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
+                {Array.from({ length: 8 }, (_, j) => (i + j) % 2 === 0 ? '1' : '0').join('')}
               </motion.div>
             ))}
           </div>
         )}
-        {/* Binary Rain Effect */}
-        <div className="absolute inset-0 overflow-hidden opacity-5 dark:opacity-10">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={`binary-${i}`}
-              className="absolute text-green-500 font-mono text-xs select-none"
-              animate={{
-                y: [-20, 1000],
-              }}
-              transition={{
-                duration: Math.random() * 8 + 4,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-                ease: "linear",
-              }}
-              style={{
-                left: `${Math.random() * 100}%`,
-              }}
-            >
-              {Array.from({ length: 20 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
-            </motion.div>
-          ))}
-        </div>
+        {/* Binary Rain Effect - Only show on client */}
+        {isClient && (
+          <div className="absolute inset-0 overflow-hidden opacity-5 dark:opacity-10">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={`binary-${i}`}
+                className="absolute text-green-500 font-mono text-xs select-none"
+                animate={{
+                  y: [-20, 1000],
+                }}
+                transition={{
+                  duration: (i % 8) + 4,
+                  repeat: Infinity,
+                  delay: (i % 5),
+                  ease: "linear",
+                }}
+                style={{
+                  left: `${(i * 5) % 100}%`,
+                }}
+              >
+                {Array.from({ length: 20 }, (_, j) => (i + j) % 3 === 0 ? '1' : '0').join('')}
+              </motion.div>
+            ))}
+          </div>
+        )}
 
-        {/* Neural Network Nodes */}
-        <div className="absolute inset-0 opacity-5 dark:opacity-10">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={`node-${i}`}
-              className="absolute w-2 h-2 bg-blue-500 rounded-full"
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: Math.random() * 4 + 2,
-                repeat: Infinity,
-                delay: Math.random() * 3,
-              }}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-            />
-          ))}
-        </div>
+        {/* Neural Network Nodes - Only show on client */}
+        {isClient && (
+          <div className="absolute inset-0 opacity-5 dark:opacity-10">
+            {[...Array(12)].map((_, i) => (
+              <motion.div
+                key={`node-${i}`}
+                className="absolute w-2 h-2 bg-blue-500 rounded-full"
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.3, 0.8, 0.3],
+                }}
+                transition={{
+                  duration: (i % 4) + 2,
+                  repeat: Infinity,
+                  delay: (i % 3),
+                }}
+                style={{
+                  left: `${(i * 8.33) % 100}%`,
+                  top: `${(i * 7.14) % 100}%`,
+                }}
+              />
+            ))}
+          </div>
+        )}
 
-        {/* Floating Code Symbols */}
-        <div className="absolute inset-0 opacity-4 dark:opacity-8">
-          {['λ', '∑', 'π', '∇', '∞', 'α', 'β', 'θ'].map((symbol, i) => (
-            <motion.div
-              key={`symbol-${i}`}
-              className="absolute text-purple-500 font-mono text-lg select-none"
-              animate={{
-                x: [0, 50, 0],
-                y: [0, -30, 0],
-                rotate: [0, 180, 360],
-                opacity: [0.2, 0.6, 0.2],
-              }}
-              transition={{
-                duration: Math.random() * 15 + 10,
-                repeat: Infinity,
-                delay: Math.random() * 8,
-              }}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-            >
-              {symbol}
-            </motion.div>
-          ))}
-        </div>
+        {/* Floating Code Symbols - Only show on client */}
+        {isClient && (
+          <div className="absolute inset-0 opacity-4 dark:opacity-8">
+            {['λ', '∑', 'π', '∇', '∞', 'α', 'β', 'θ'].map((symbol, i) => (
+              <motion.div
+                key={`symbol-${i}`}
+                className="absolute text-purple-500 font-mono text-lg select-none"
+                animate={{
+                  x: [0, 50, 0],
+                  y: [0, -30, 0],
+                  rotate: [0, 180, 360],
+                  opacity: [0.2, 0.6, 0.2],
+                }}
+                transition={{
+                  duration: (i % 15) + 10,
+                  repeat: Infinity,
+                  delay: (i % 8),
+                }}
+                style={{
+                  left: `${(i * 12.5) % 100}%`,
+                  top: `${(i * 11.11) % 100}%`,
+                }}
+              >
+                {symbol}
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         {/* Subtle Grid Pattern */}
         <div 
