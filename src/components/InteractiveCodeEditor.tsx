@@ -26,7 +26,7 @@ model = tf.keras.Sequential([
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy')
 model.fit(X_train, y_train, epochs=10, validation_split=0.2)
 
-print("Model training completed! 🚀")`
+print(&quot;Model training completed! 🚀&quot;)`
   },
   {
     language: 'javascript',
@@ -90,7 +90,7 @@ int main() {
     int target = 7;
     
     int result = binarySearch(arr, target);
-    cout << "Element found at index: " << result << endl;
+    cout &lt;&lt; &quot;Element found at index: &quot; &lt;&lt; result &lt;&lt; endl;
     
     return 0;
 }`
@@ -223,7 +223,7 @@ export default function InteractiveCodeEditor() {
             
             {!displayedCode && !isTyping && (
               <div className="text-gray-500 italic">
-                Click "Run" to see {snippet.title} in action...
+                Click &quot;Run&quot; to see {snippet.title} in action...
               </div>
             )}
           </div>
