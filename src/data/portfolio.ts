@@ -201,15 +201,255 @@ export const timeline: readonly TimelineItem[] = [
   {
     id: 4,
     type: "certification",
-    title: "Multiple Certifications",
-    organization: "Various Platforms",
+    title: "Computational Theory: Language Principle & Finite Automata Theory",
+    organization: "Skillsoft",
     location: "Online",
-    period: "2023 - Present",
-    description: "Completed various certifications to enhance skills in management, networking, and technology.",
+    period: "August 2025",
+    description: "Advanced computational theory certification covering language principles and finite automata theory. Credential ID: 157772739",
     achievements: [
-      "Management Tips - PMI LinkedIn Learning (October 2023)",
-      "HACK_IOT Certificate (February 2024)",
-      "Bits and Bytes of Computer Networking by Google (September 2024)"
+      "Mastered finite automata theory concepts",
+      "Understanding of computational language principles",
+      "Applied theoretical concepts to practical problems"
+    ]
+  },
+  {
+    id: 5,
+    type: "certification",
+    title: "DSA Summer Training",
+    organization: "Hitbullseye",
+    location: "Online",
+    period: "July 2025",
+    description: "Intensive Data Structures and Algorithms training program focused on competitive programming and problem-solving techniques.",
+    achievements: [
+      "Enhanced DSA and Data Structures expertise",
+      "Improved LeetCode problem-solving skills",
+      "Advanced C++ programming techniques",
+      "Developed logical problem-solving approach"
+    ]
+  },
+  {
+    id: 6,
+    type: "certification",
+    title: "JAVA Programming",
+    organization: "Lovely Professional University",
+    location: "Phagwara, Punjab",
+    period: "May 2025",
+    description: "Comprehensive Java programming certification covering object-oriented programming concepts and practical application development.",
+    achievements: [
+      "Mastered Java programming fundamentals",
+      "Enhanced logic building capabilities",
+      "GitHub project development and management",
+      "Object-oriented programming implementation"
+    ]
+  },
+  {
+    id: 7,
+    type: "certification",
+    title: "Data Structures and Algorithm",
+    organization: "Lovely Professional University",
+    location: "Phagwara, Punjab",
+    period: "December 2024",
+    description: "Advanced certification in Data Structures and Algorithms with focus on implementation and optimization techniques.",
+    achievements: [
+      "Advanced Data Structures implementation",
+      "Algorithm optimization techniques",
+      "Programming problem-solving methodologies",
+      "Computational complexity analysis"
+    ]
+  },
+  {
+    id: 8,
+    type: "certification",
+    title: "Object Oriented Programming",
+    organization: "Lovely Professional University",
+    location: "Phagwara, Punjab",
+    period: "December 2024",
+    description: "Comprehensive Object-Oriented Programming certification with emphasis on C++ and critical thinking in software design.",
+    achievements: [
+      "Object-Oriented Programming mastery",
+      "Critical thinking in software design",
+      "Advanced C++ programming concepts",
+      "Software architecture principles"
+    ]
+  },
+  {
+    id: 9,
+    type: "certification",
+    title: "Packet Switching Networks and Algorithms",
+    organization: "University of Colorado Boulder",
+    location: "Online",
+    period: "November 2024",
+    description: "Advanced networking certification covering packet switching technologies and routing algorithms including OSPF protocols.",
+    achievements: [
+      "Open Shortest Path First (OSPF) protocol expertise",
+      "Advanced networking algorithms understanding",
+      "General networking concepts mastery",
+      "Routing protocols implementation knowledge"
+    ]
+  },
+  {
+    id: 10,
+    type: "certification",
+    title: "Peer-to-Peer Protocols and Local Area Networks",
+    organization: "University of Colorado Boulder",
+    location: "Online",
+    period: "October 2024",
+    description: "Comprehensive networking certification focusing on P2P protocols, LAN technologies, and network performance management.",
+    achievements: [
+      "OSI Models comprehensive understanding",
+      "Network Performance Management techniques",
+      "TCP/IP protocol suite mastery",
+      "Computer Networking and Wireless Networks expertise"
+    ]
+  },
+  {
+    id: 11,
+    type: "certification",
+    title: "Digital Systems: From Logic Gates to Processors",
+    organization: "Universitat Autònoma de Barcelona",
+    location: "Online",
+    period: "September 2024",
+    description: "Advanced digital systems certification covering hardware architecture from basic logic gates to complex processor design.",
+    achievements: [
+      "Verification and Validation (V&V) methodologies",
+      "Software Design for hardware systems",
+      "Hardware Architecture comprehensive knowledge",
+      "Computer Hardware and Simulations expertise"
+    ]
+  },
+  {
+    id: 12,
+    type: "certification",
+    title: "Fundamentals of Network Communication",
+    organization: "University of Colorado Boulder",
+    location: "Online",
+    period: "September 2024",
+    description: "Foundation networking certification covering essential network communication protocols and planning methodologies.",
+    achievements: [
+      "OSI Models fundamental understanding",
+      "TCP/IP protocol implementation",
+      "Transmission Control Protocol (TCP) mastery",
+      "Network planning and design principles"
+    ]
+  },
+  {
+    id: 13,
+    type: "certification",
+    title: "Introduction to Hardware and Operating Systems",
+    organization: "IBM",
+    location: "Online",
+    period: "September 2024",
+    description: "Comprehensive hardware and OS certification covering modern computing systems and virtualization technologies.",
+    achievements: [
+      "Internet of Things (IoT) understanding",
+      "Windows and Mac OS expertise",
+      "Peripheral Devices management",
+      "Kernel-based Virtual Machine (KVM) and Virtualization"
+    ]
+  },
+  {
+    id: 14,
+    type: "certification",
+    title: "The Bits and Bytes of Computer Networking",
+    organization: "Google",
+    location: "Online",
+    period: "September 2024",
+    description: "Google's comprehensive networking certification covering practical network administration and wireless technologies.",
+    achievements: [
+      "Data Integration techniques",
+      "Wireless Networks implementation",
+      "Network Administration best practices",
+      "Dynamic Host Configuration Protocol (DHCP) expertise"
+    ]
+  },
+  {
+    id: 15,
+    type: "certification",
+    title: "Computer Programming",
+    organization: "Lovely Professional University",
+    location: "Phagwara, Punjab",
+    period: "May 2024",
+    description: "Foundation programming certification in C language covering syntax, data types, and logical programming concepts.",
+    achievements: [
+      "C Programming Language mastery",
+      "Logic building fundamentals",
+      "Programming syntax understanding",
+      "Data types and memory management"
+    ]
+  },
+  {
+    id: 16,
+    type: "certification",
+    title: "Mastering Full Stack Development: From Frontend to Backend",
+    organization: "Udemy",
+    location: "Online",
+    period: "February 2024",
+    description: "Comprehensive full-stack development certification covering both frontend and backend technologies.",
+    achievements: [
+      "Full-Stack Development expertise",
+      "Web Development best practices",
+      "Frontend and Backend integration",
+      "Modern development frameworks"
+    ]
+  },
+  {
+    id: 17,
+    type: "certification",
+    title: "Responsive Web Design",
+    organization: "freeCodeCamp",
+    location: "Online",
+    period: "November 2023",
+    description: "Comprehensive web design certification focusing on responsive design principles and modern web technologies.",
+    achievements: [
+      "Cascading Style Sheets (CSS) mastery",
+      "HTML5 advanced techniques",
+      "Web Design best practices",
+      "Responsive Web Development principles"
+    ]
+  },
+  {
+    id: 18,
+    type: "certification",
+    title: "Management Tips",
+    organization: "Project Management Institute (PMI)",
+    location: "Online",
+    period: "October 2023",
+    description: "Professional management certification focusing on leadership, team dynamics, and critical thinking skills.",
+    achievements: [
+      "Critical Thinking enhancement",
+      "Team Spirit and collaboration",
+      "Teamwork optimization strategies",
+      "Management best practices"
+    ]
+  },
+  {
+    id: 19,
+    type: "certification",
+    title: "Pitching Yourself for Opportunity",
+    organization: "LinkedIn",
+    location: "Online",
+    period: "September 2023",
+    description: "Professional development certification focused on self-promotion and opportunity presentation skills.",
+    achievements: [
+      "Pitching Ideas effectively",
+      "Self Promotion strategies",
+      "Professional presentation skills",
+      "Opportunity recognition and pursuit"
+    ]
+  },
+  {
+    id: 20,
+    type: "certification",
+    title: "Video Editing Online Course",
+    organization: "Inside The Edit",
+    location: "Online",
+    period: "2023",
+    description: "Professional video editing certification covering advanced editing techniques and color grading.",
+    achievements: [
+      "Advanced Video Editing techniques",
+      "Video Color Grading mastery",
+      "After Effects proficiency",
+      "LUT (Look-Up Tables) implementation"
     ]
   }
 ]
