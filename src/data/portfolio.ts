@@ -140,6 +140,17 @@ export const projects: readonly Project[] = [
     github: "https://github.com/akshitjain1/Eco-TecH",
     demo: "https://akshitjain1.github.io/Eco-TecH/",
     featured: false
+  },
+  {
+    id: 7,
+    title: "Pathfinding Visualizer",
+    description: "An interactive web application that visualizes classic pathfinding algorithms like A*, Dijkstra's, BFS, and DFS. Features include real-time animation, maze generation, and a unique comparison mode to analyze algorithm performance.",
+    image: "/projects/pathfinding-visualizer.png",
+    tags: ["JavaScript", "HTML", "Tailwind CSS", "Data Structures", "Algorithms"],
+    category: "Web Application",
+    github: "https://github.com/akshitjain1/Maze-Path-Finder/",
+    demo: "https://akshitjain1.github.io/Maze-Path-Finder/",
+    featured: true
   }
 ]
 
