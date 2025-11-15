@@ -35,7 +35,7 @@ const ParticleBackground = dynamic(() => import('@/components/ParticleBackground
 
 export default function Home() {
   return (
-    <main className="relative cursor-none">
+    <main className="relative">
       <ParticleBackground />
       <CustomCursor />
       <FloatingNotifications />

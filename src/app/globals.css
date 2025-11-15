@@ -14,7 +14,7 @@ body {
   background-color: #fafaf9;
   color: #1f2937;
   transition: color 0.3s ease, background-color 0.3s ease;
-  cursor: none; /* Hide default cursor for custom cursor */
+  cursor: auto; /* Restore default cursor */
 }
 
 /* Responsive cursor - show default on mobile */
@@ -37,7 +37,7 @@ body {
 
 /* Improve cursor performance */
 button, a, [role="button"] {
-  cursor: none;
+  cursor: pointer;
   transform: translateZ(0); /* Force hardware acceleration */
 }
 
