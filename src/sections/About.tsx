@@ -239,7 +239,7 @@ export default function About() {
               
               {/* Profile Image with Enhanced Effects */}
               <motion.img
-                src="/projects/Picture.png"
+                src="/profile.jpg"
                 alt="Akshit Jain"
                 className="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] object-cover object-top rounded-xl"
                 whileHover={{ 

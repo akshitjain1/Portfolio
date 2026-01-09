@@ -151,6 +151,28 @@ export const projects: readonly Project[] = [
     github: "https://github.com/akshitjain1/Maze-Path-Finder/",
     demo: "https://akshitjain1.github.io/Maze-Path-Finder/",
     featured: true
+  },
+  {
+    id: 8,
+    title: "Rheumatoid Arthritis Patient Stratification using K-Modes Clustering",
+    description: "A clinically interpretable, patent-based machine learning system for identifying meaningful subgroups of Rheumatoid Arthritis (RA) patients using purely categorical comorbidity, lifestyle, demographic, and socioeconomic data. Patent Title: Patient Stratification for Rheumatoid Arthritis using K-Modes Clustering on Categorical Comorbidity and Symptom Data.",
+    image: "/projects/ra_kmodes.png",
+    tags: ["Python", "pandas", "K-Modes", "Streamlit", "joblib", "matplotlib", "Machine Learning"],
+    category: "Machine Learning",
+    github: "https://github.com/akshitjain1/ra-kmodes-stratification",
+    demo: "https://ra-kmodes-stratification.streamlit.app/",
+    featured: true
+  },
+  {
+    id: 9,
+    title: "Explainable Clinical Entity Recognition (De-identified EHR)",
+    description: "An end-to-end NLP system for extracting clinical entities from Electronic Health Records (EHRs) while ensuring patient privacy through de-identification and providing explainability for model predictions. Features 72% accuracy, comprehensive PHI masking (10+ pattern types), interactive visualizations, and transformer-based biomedical NER with confidence scoring.",
+    image: "/projects/ecer.png",
+    tags: ["Python", "HuggingFace Transformers", "PyTorch", "Streamlit", "NLP", "Healthcare AI", "XAI"],
+    category: "Machine Learning",
+    github: "https://github.com/akshitjain1/EHR-CNER-Explainable",
+    demo: "",
+    featured: true
   }
 ]
 
