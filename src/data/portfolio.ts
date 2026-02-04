@@ -184,6 +184,17 @@ export const projects: readonly Project[] = [
     github: "https://github.com/akshitjain1/exam_platform",
     demo: "",
     featured: true
+  },
+  {
+    id: 11,
+    title: "CampusMart",
+    description: "A Django-based e-commerce platform designed for campus communities to buy and sell products. Features user authentication and profile management, product listing with detailed views, shopping cart functionality, order management system, admin panel for product and order management, and responsive design with custom templates. Built for seamless campus marketplace experience.",
+    image: "/projects/campusmart.png",
+    tags: ["Django", "Python", "MySQL", "HTML", "CSS", "E-commerce", "Authentication"],
+    category: "Web Application",
+    github: "https://github.com/akshitjain1/django_ecommerce_1",
+    demo: "",
+    featured: true
   }
 ]
 
