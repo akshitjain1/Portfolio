@@ -173,6 +173,17 @@ export const projects: readonly Project[] = [
     github: "https://github.com/akshitjain1/EHR-CNER-Explainable",
     demo: "",
     featured: true
+  },
+  {
+    id: 10,
+    title: "Exam Platform",
+    description: "A comprehensive Django-based online examination platform featuring student registration with email OTP verification, exam management system with multiple question types (MCQ, Subjective, Mixed), automatic evaluation for objective questions, admin dashboard with statistics and student management, profile management with social media integration, and secure password reset functionality.",
+    image: "/projects/exam-platform.png",
+    tags: ["Django", "Python", "MySQL", "HTML", "CSS", "Bootstrap", "Gmail SMTP", "OTP Verification"],
+    category: "Web Application",
+    github: "https://github.com/akshitjain1/exam_platform",
+    demo: "",
+    featured: true
   }
 ]
 
