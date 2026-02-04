@@ -53,8 +53,10 @@ export const skills: SkillCategory = {
   "Web Development": [
     { name: "HTML", level: 80, icon: "html" },
     { name: "CSS", level: 80, icon: "css" },
+    { name: "Django", level: 80, icon: "django" },
     { name: "React", level: 65, icon: "react" },
     { name: "Flask", level: 70, icon: "flask" },
+    { name: "Bootstrap", level: 75, icon: "bootstrap" },
     { name: "Streamlit", level: 75, icon: "streamlit" }
   ],
   "AI/ML & Data Science": [
@@ -63,6 +65,12 @@ export const skills: SkillCategory = {
     { name: "NumPy", level: 75, icon: "numpy" },
     { name: "Scikit-learn", level: 70, icon: "sklearn" },
     { name: "TensorFlow", level: 60, icon: "tensorflow" }
+  ],
+  "Database & Backend": [
+    { name: "MySQL", level: 80, icon: "mysql" },
+    { name: "Database Design", level: 75, icon: "database" },
+    { name: "RESTful APIs", level: 70, icon: "api" },
+    { name: "Authentication", level: 75, icon: "auth" }
   ],
   "Tools & Technologies": [
     { name: "Git", level: 80, icon: "git" },
